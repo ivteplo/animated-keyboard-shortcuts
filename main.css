@@ -29,6 +29,24 @@ p {
   line-height: 1.5;
 }
 
+kbd {
+  font-family:
+    ui-monospace,
+    "SF Mono",
+    Menlo,
+    Monaco,
+    "Cascadia Mono",
+    "Segoe UI Mono",
+    "Roboto Mono",
+    "Oxygen Mono",
+    "Ubuntu Monospace",
+    "Source Code Pro",
+    "Fira Mono",
+    "Droid Sans Mono",
+    "Courier New",
+    monospace;
+}
+
 kbd > kbd {
   padding: 0.25rem;
 
