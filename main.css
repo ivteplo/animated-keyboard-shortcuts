@@ -6,6 +6,14 @@
   --outline: #ccc;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #fff;
+    --background: #000;
+    --outline: #999;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
