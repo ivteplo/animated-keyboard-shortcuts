@@ -1,0 +1,45 @@
+/* Copyright (c) 2022 Ivan Teplov */
+
+:root {
+  --foreground: #000;
+  --background: #fff;
+  --outline: #ccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+kbd > kbd {
+  padding: 0.25rem;
+
+  border: 0.0625rem solid var(--outline);
+  border-radius: 0.5rem;
+
+  --shadow-offset-y: -0.15rem;
+  transition: box-shadow 0.1s ease-out;
+  box-shadow: inset 0 var(--shadow-offset-y) 0 var(--outline);
+}
+
+kbd.pressed {
+  --shadow-offset-y: 0rem;
+}
