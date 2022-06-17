@@ -2,10 +2,11 @@
   "name": "animated-keyboard-shortcuts",
   "version": "1.0.0",
   "description": "A little library to add animations to <kbd> tags when pressing corresponding keys",
-  "main": "library/index.js",
-  "type": "module",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "vite"
+    "test": "vite",
+    "build": "rollup --config rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,9 @@
   },
   "homepage": "https://github.com/ivteplo/animated-keyboard-shortcuts#readme",
   "devDependencies": {
+    "rollup": "^2.75.6",
+    "rollup-plugin-ts": "^3.0.2",
+    "typescript": "^4.7.3",
     "vite": "^2.9.12"
   }
 }
