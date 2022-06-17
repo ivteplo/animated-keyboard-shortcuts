@@ -12,7 +12,8 @@
     "preview.gif"
   ],
   "scripts": {
-    "test": "vite",
+    "example:dev": "vite",
+    "example:build": "vite build",
     "build": "rollup --config rollup.config.js"
   },
   "repository": {
