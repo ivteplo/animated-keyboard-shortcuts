@@ -1,6 +1,6 @@
 {
   "name": "animated-keyboard-shortcuts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A little library to add animations to <kbd> tags when pressing corresponding keys",
   "main": "build/index.js",
   "types": "build/index.d.ts",
