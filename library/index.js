@@ -1,11 +1,6 @@
 // Copyright (c) 2022 Ivan Teplov
 
 /**
- * Each key in a
- */
-const keys = document.querySelectorAll("kbd > kbd")
-
-/**
  * An object, where each key corersponds to a keyboard key
  * and each value to a boolean
  * (true if the key is pressed, false if it is not)
@@ -21,15 +16,25 @@ const pressedKeys = {}
  */
 const observers = {}
 
-// Fill the `observers` object with corresponding `<kbd>` elements
-for (const key of keys) {
-  const keyName = key.textContent.toLowerCase()
+/**
+ * Indicates whether keydown and keyup event listeners are added to the window
+ * @type {boolean}
+ */
+let isListening = false
+
+/**
+ * @param {HTMLElement} element
+ */
+export function registerElement(element) {
+  addEventListeners()
+
+  const keyName = element.textContent.trim().toLowerCase()
 
   if (!(keyName in observers)) {
     observers[keyName] = []
   }
 
-  observers[keyName].push(key)
+  observers[keyName].push(element)
 }
 
 /**
@@ -40,6 +45,11 @@ for (const key of keys) {
 function setIsKeyPressed(key, isPressed) {
   // Convert key name to the lower case
   const lowerCasedKey = key.toLowerCase()
+
+  // Keydown event gets called many times if a user holds a key,
+  // so we don't want to go through each element again and again,
+  // especially if there are too many elements
+  if (pressedKeys[lowerCasedKey] === isPressed) return
 
   // Save state of the key
   pressedKeys[lowerCasedKey] = isPressed
@@ -82,11 +92,44 @@ function setKeyStates(event, isKeyDownEvent) {
   setIsKeyPressed("⌘", event.metaKey)
 }
 
-// Add event listeners to the window object
-window.addEventListener("keydown", (event) => {
+/**
+ * @type {KeyboardEvent}
+ */
+function onKeyDown(event) {
   setKeyStates(event, true)
-})
+}
 
-window.addEventListener("keyup", (event) => {
+/**
+ * @type {KeyboardEvent}
+ */
+function onKeyUp(event) {
   setKeyStates(event, false)
-})
+}
+
+/**
+ * Register event listeners for keydown and keyup events
+ * @returns {void}
+ */
+export function addEventListeners() {
+  if (isListening) return
+
+  // Add event listeners to the window object
+  window.addEventListener("keydown", onKeyDown)
+  window.addEventListener("keyup", onKeyUp)
+
+  isListening = true
+}
+
+/**
+ * Unregister event listeners for keydown and keyup events
+ * @returns {void}
+ */
+export function removeEventListeners() {
+  if (!isListening) return
+
+  // Remove event listeners from the window object
+  window.removeEventListener("keydown", onKeyDown)
+  window.removeEventListener("keyup", onKeyUp)
+
+  isListening = false
+}

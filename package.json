@@ -1,0 +1,36 @@
+{
+  "name": "animated-keyboard-shortcuts",
+  "version": "1.0.0",
+  "description": "A little library to add animations to <kbd> tags when pressing corresponding keys",
+  "main": "library/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivteplo/animated-keyboard-shortcuts.git"
+  },
+  "keywords": [
+    "animations",
+    "front-end",
+    "frontend",
+    "animate",
+    "keyboard",
+    "shortcuts",
+    "kbd",
+    "subtle-animations",
+    "ui",
+    "ux",
+    "ui-ux"
+  ],
+  "author": "Ivan Teplov <iteplov7@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ivteplo/animated-keyboard-shortcuts/issues"
+  },
+  "homepage": "https://github.com/ivteplo/animated-keyboard-shortcuts#readme",
+  "devDependencies": {
+    "vite": "^2.9.12"
+  }
+}
