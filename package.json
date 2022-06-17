@@ -4,6 +4,13 @@
   "description": "A little library to add animations to <kbd> tags when pressing corresponding keys",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "files": [
+    "build/**",
+    "library/**",
+    "README.md",
+    "LICENSE",
+    "preview.gif"
+  ],
   "scripts": {
     "test": "vite",
     "build": "rollup --config rollup.config.js"

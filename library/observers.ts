@@ -1,5 +1,7 @@
 // Copyright (c) 2022 Ivan Teplov
 
+import { normalizeKeyName } from "./keys"
+
 /**
  * An object, where each key corresponds to a keyboard key
  * and each value to a list of kbd tags that should change
@@ -10,16 +12,20 @@ const observers: Record<string, HTMLElement[]> = {}
 const toggledClassName = "pressed"
 
 export function addObserver(keyName: string, element: HTMLElement): void {
-  if (!(keyName in observers)) {
-    observers[keyName] = []
+  const normalizedKey = normalizeKeyName(keyName)
+
+  if (!(normalizedKey in observers)) {
+    observers[normalizedKey] = []
   }
 
-  observers[keyName].push(element)
+  observers[normalizedKey].push(element)
 }
 
 export function updateObserverState(keyName: string, isKeyPressed: boolean) {
+  const normalizedKey = normalizeKeyName(keyName)
+
   // Iterate over observers for the key
-  for (const observer of observers[keyName]) {
+  for (const observer of observers[normalizedKey]) {
     // Toggle classes depending on the key state
     if (isKeyPressed) {
       observer.classList.add(toggledClassName)

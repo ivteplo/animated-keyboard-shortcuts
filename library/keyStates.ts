@@ -1,6 +1,7 @@
 // Copyright (c) 2022 Ivan Teplov
 
 import { updateObserverState } from "./observers"
+import { normalizeKeyName } from "./keys"
 
 /**
  * An object, where each key corersponds to a keyboard key
@@ -8,25 +9,6 @@ import { updateObserverState } from "./observers"
  * (true if the key is pressed, false if it is not)
  */
 const pressedKeys: Record<string, boolean> = {}
-
-function normalizeKeyName(originalName: string) {
-  const lowerCased = originalName.toLowerCase()
-
-  switch (lowerCased) {
-    case "control":
-      return "ctrl"
-    case "option":
-      return "alt"
-    case "windows":
-    case "win":
-    case "⊞":
-    case "command":
-    case "⌘":
-      return "meta"
-    default:
-      return lowerCased
-  }
-}
 
 /**
  * Save key state to the `pressedKeys` object
